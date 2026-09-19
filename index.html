@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SYSTEM - Official Telegram Channel</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1452848110238061');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1452848110238061&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.7; transform: scale(1); filter: blur(6px); }
+            50% { opacity: 1; transform: scale(1.08); filter: blur(10px); }
+        }
+
+        @keyframes floatBg {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-25px) scale(1.15); }
+        }
+
+        .avatar-glow-ring {
+            position: relative;
+        }
+
+        .avatar-glow-ring::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #22c55e, #10b981, #06b6d4, #3b82f6, #ec4899, #ef4444);
+            background-size: 300% 300%;
+            animation: rotateGlow 5s linear infinite, pulseGlow 2.8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .avatar-glow-ring::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6, #ef4444);
+            z-index: 1;
+        }
+
+        /* Dynamic background atmospheric lights */
+        .bg-light-1 {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(0,0,0,0) 70%);
+            animation: floatBg 7s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .bg-light-2 {
+            position: absolute;
+            bottom: 15%;
+            right: 10%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(0,0,0,0) 70%);
+            animation: floatBg 9s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
+
+        /* Custom Button Gradient Pulse */
+        .btn-gradient {
+            background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
+            background-size: 200% auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px -5px rgba(6, 182, 212, 0.5), 0 8px 15px -6px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-gradient:hover {
+            background-position: right center;
+            box-shadow: 0 20px 35px -8px rgba(6, 182, 212, 0.7), 0 10px 20px -5px rgba(16, 185, 129, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-gradient:active {
+            transform: translateY(1px);
+        }
+
+        /* Status Dot Ripple */
+        .status-dot {
+            position: relative;
+        }
+
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background-color: inherit;
+            animation: statusPulse 1.8s ease-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(2.6); opacity: 0; }
+        }
+
+        /* Honeypot Invisible Trap Element for Anti-Bot */
+        .hp-field {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-[#050811] text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden relative selection:bg-emerald-500 selection:text-white">
+
+    <div class="bg-light-1"></div>
+    <div class="bg-light-2"></div>
+
+    <!-- Background Particles Canvas Animation -->
+    <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- ANTI-BOT HONEYPOT ELEMENT (Bots try to interact with this, exposing themselves) -->
+    <div class="hp-field">
+        <input type="text" id="botTrapField" name="bot_verification_trap" tabindex="-1" autocomplete="off">
+        <a href="https://t.me/fake_channel_trap" id="botTrapLink" rel="nofollow">Bot Link</a>
+    </div>
+
+    <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-10 max-w-lg mx-auto w-full">
+        
+        <!-- Top Pill Tag -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 shadow-lg shadow-amber-500/10 mb-8 text-xs font-semibold text-amber-300">
+            <span class="w-2 h-2 rounded-full bg-amber-400 status-dot"></span>
+            <span class="tracking-wide">Systeme Bhai</span>
+        </div>
+
+        <!-- Profile Avatar Container with Dual RGB Pulsing Glow Ring -->
+        <div class="relative mb-7">
+            <div class="avatar-glow-ring w-36 h-36 md:w-40 md:h-40 rounded-full p-1 flex items-center justify-center">
+                <!-- User Logo Image -->
+                <img id="profileAvatar" 
+                     src="https://v3b.cash/_next/image?url=https%3A%2F%2Flh3.googleusercontent.com%2Fa%2FACg8ocI4s0vV5288Tf_-Z1-77b5T1v37aWb37-236b23b%3Ds96-c&w=256&q=75" 
+                     alt="SYSTEM Profile Logo" 
+                     class="w-full h-full object-cover rounded-full relative z-10 border-2 border-slate-950 shadow-2xl"
+                     onerror="this.src='https://placehold.co/400x400/0f172a/10b981?text=SYSTEM'">
+            </div>
+        </div>
+
+        <!-- Headline Name & Blue Verified Badge -->
+        <div class="flex items-center gap-2 mb-2">
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase">
+                SYSTEM
+            </h1>
+            <svg class="w-7 h-7 text-sky-400 fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="none"/>
+                <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.172-6.414l7.071-7.07-1.414-1.415-5.657 5.656-2.828-2.829-1.414 1.415 4.242 4.243z" fill="#38bdf8"/>
+            </svg>
+        </div>
+
+        <!-- Subtitle Headline -->
+        <p class="text-sm md:text-base text-slate-300 text-center max-w-xs md:max-w-sm mb-8 leading-relaxed font-medium">
+            Daily market levels and setups. Free to join.
+        </p>
+
+        <div class="w-full max-w-xs sm:max-w-sm px-2 mb-6">
+            <button id="ctaJoinBtn" class="btn-gradient w-full py-4 px-6 rounded-2xl flex items-center justify-center gap-3 text-white font-extrabold text-lg tracking-wide cursor-pointer active:scale-[0.98]">
+                <i class="fa-brands fa-telegram text-2xl"></i>
+                <span>Join Now</span>
+                <i class="fa-solid fa-arrow-right text-sm ml-1 opacity-90"></i>
+            </button>
+        </div>
+
+        <!-- Status Indicator Text -->
+        <div class="text-center mb-6">
+            <p class="text-xs text-slate-400 font-medium tracking-wide">
+                Status: <span class="text-amber-400 font-bold">Standby</span> &mdash; <span class="text-slate-400">tap to open Telegram</span>
+            </p>
+        </div>
+
+        <!-- Anti-Bot Warning Alert (Only triggers if a bot or automated click is detected) -->
+        <div id="botAlertBox" class="hidden w-full max-w-xs bg-red-950/80 border border-red-500/50 text-red-200 text-xs p-3.5 rounded-xl text-center backdrop-blur-md mb-4 shadow-xl">
+            <i class="fa-solid fa-shield-halved mr-1.5 text-red-400 text-sm"></i>
+            <span id="botAlertText">Automated click detected. Human verification required.</span>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-6 text-center text-xs text-slate-500 font-medium border-t border-slate-800/50">
+        <p>Powered by Kabir</p>
+    </footer>
+
+    <script>
+        const TARGET_TELEGRAM_LINK = "https://t.me/+YZvsPQtltXBjMWM1";
+        const META_PIXEL_ID = "1452848110238061";
+
+        let pageLoadTimestamp = Date.now();
+        let humanTouchDetected = false;
+        let mouseMoveCount = 0;
+        let isRedirecting = false;
+        let isBotDetected = false;
+
+        // Track natural human gestures (Mouse movements, touchscreen touch, scrolling)
+        function registerHumanActivity() {
+            humanTouchDetected = true;
+            mouseMoveCount++;
+        }
+
+        window.addEventListener('mousemove', registerHumanActivity, { passive: true });
+        window.addEventListener('touchstart', registerHumanActivity, { passive: true });
+        window.addEventListener('scroll', registerHumanActivity, { passive: true });
+        window.addEventListener('keydown', registerHumanActivity, { passive: true });
+
+        /**
+         * Comprehensive Anti-Bot Verification Engine
+         * Protects Meta Ad campaigns against fake bot clicks, crawler crawlers, & automated scripts.
+         */
+        function verifyHumanClick(event) {
+            // 1. Check Honeypot Field (If filled, it's definitely a bot script)
+            const trapInput = document.getElementById('botTrapField');
+            if (trapInput && trapInput.value.length > 0) {
+                return { isValid: false, reason: "Honeypot trap triggered" };
+            }
+
+            // 2. Check User-Agent for known Meta Crawlers & Headless Bots
+            const ua = navigator.userAgent.toLowerCase();
+            const botSignatures = [
+                'facebookexternalhit', 'facebookcatalog', 'meta-externalagent', 'facebot',
+                'googlebot', 'bingbot', 'slurp', 'duckduckbot', 'baiduspider',
+                'headlesschrome', 'phantomjs', 'selenium', 'puppeteer', 'lighthouse',
+                'bytespider', 'python-requests', 'curl', 'wget'
+            ];
+
+            for (const bot of botSignatures) {
+                if (ua.includes(bot)) {
+                    return { isValid: false, reason: `Crawler User-Agent: ${bot}` };
+                }
+            }
+
+            // 3. Webdriver & Automation Flags Check
+            if (navigator.webdriver || window.domAutomation || window.domAutomationController) {
+                return { isValid: false, reason: "Browser automation flag (navigator.webdriver)" };
+            }
+
+            // 4. Ultra-Fast Click Test (Prevents instant automated fake clicks)
+            const timeElapsed = Date.now() - pageLoadTimestamp;
+            if (timeElapsed < 400) { // Real humans take >400ms to visually process and click
+                return { isValid: false, reason: `Speed click anomaly (${timeElapsed}ms)` };
+            }
+
+            // 5. Simulated Event Check (Coordinates check)
+            if (event && event.clientX === 0 && event.clientY === 0 && event.screenX === 0 && event.screenY === 0) {
+                if (event.type === 'click' && event.detail !== 0) {
+                    return { isValid: false, reason: "Zero-coordinate simulated click" };
+                }
+            }
+
+            // 6. Interaction Verification (Human gesture required before click)
+            if (!humanTouchDetected && timeElapsed < 1200) {
+                return { isValid: false, reason: "No natural user touch/cursor activity preceding click" };
+            }
+
+            return { isValid: true };
+        }
+
+        const ctaBtn = document.getElementById('ctaJoinBtn');
+        const botAlertBox = document.getElementById('botAlertBox');
+        const botAlertText = document.getElementById('botAlertText');
+
+        ctaBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            if (isRedirecting) return;
+
+            // Perform Anti-Bot Verification
+            const securityResult = verifyHumanClick(e);
+
+            if (!securityResult.isValid) {
+                console.warn("[SECURITY BLOCKED]:", securityResult.reason);
+                isBotDetected = true;
+                
+                // Show warning to bot/fake clicker without redirecting
+                botAlertBox.classList.remove('hidden');
+                botAlertText.innerText = "Security Verification: Please touch screen and tap again.";
+                return false;
+            }
+
+            // REAL HUMAN USER VERIFIED
+            isRedirecting = true;
+
+            // 1. Fire Meta Pixel 'Lead' Event
+            if (typeof fbq === 'function') {
+                try {
+                    fbq('track', 'Lead');
+                } catch(err) {
+                    console.log('Pixel Lead event error:', err);
+                }
+            }
+
+            // 2. Visual Button State Feedback
+            ctaBtn.style.opacity = '0.85';
+            ctaBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin text-xl"></i> <span>Connecting...</span>`;
+
+            // 3. Smooth Redirection to Telegram Link
+            setTimeout(function() {
+                window.location.href = TARGET_TELEGRAM_LINK;
+            }, 200);
+        });
+
+        function initBackgroundParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const particles = [];
+            const count = Math.min(35, Math.floor(window.innerWidth / 18));
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.8 + 0.6,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(16, 185, 129, ${p.alpha})`;
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        }
+
+        // Initialize Everything on Load
+        window.addEventListener('load', function() {
+            initBackgroundParticles();
+        });
+    </script>
+</body>
+</html>
